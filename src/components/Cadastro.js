@@ -12,7 +12,8 @@ export default function Cadastro() {
   const [image, setImage] = useState("");
   const [password, setPassword] = useState("");
 
-  function fazerCadastro() {
+  function fazerCadastro(event) {
+    event.preventDefault();
     const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up", {
       email: email,
       name: name,
@@ -21,10 +22,10 @@ export default function Cadastro() {
     })
 
     promise.then((res) => {
-      console.log(res)
+      console.log(res.data)
       alert("Cadastro realizado!")
     })
-    promise.catch((err) => alert(err.response.data))
+    promise.catch((err) => console.log(err.response.data.message))
   }
 
   return (

@@ -17,7 +17,7 @@ export const Header = styled.div`
     font-size: 38.982px;
     line-height: 49px;
     color: #ffffff;
-    margin-left:18px;
+    margin-left: 18px;
   }
 
   img {
@@ -28,9 +28,22 @@ export const Header = styled.div`
   }
 `;
 
-export const Footer = styled.div `
-width: 375px;
-height: 70px;
-display: flex;
-justify-content: space-around;
-`
+export const Footer = styled.div`
+  width: 375px;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  p {
+    font-family: "Lexend Deca";
+    font-size: 17.976px;
+    line-height: 22px;
+    text-align: center;
+    color: #52b6ff;
+  }
+`;
+

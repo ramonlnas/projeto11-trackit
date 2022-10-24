@@ -4,23 +4,26 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../Login/logo.png";
 
-
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
 
-  function fazerLogin() {
-    const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", {
-      email: email,
-      password: password
-      
-    })
+  function fazerLogin(event) {
+    event.preventDefault()
+    const promise = axios.post(
+      "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",
+      {
+        email: email,
+        password: password,
+      }
+    );
 
     promise.then((res) => {
-      alert("Login realizado com sucesso!")
-    })
-    promise.catch((err) => alert(err.response.data))
+      console.log(res.data)
+      alert("Login realizado com sucesso!");
+    });
+    promise.catch((err) => alert("Algo deu errado, tente novamente"));
   }
 
   return (
@@ -40,9 +43,11 @@ export default function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="senha"
-            required
+            required 
           />
-          <button type="submit">Entrar</button>
+          <button type="submit">
+            Entrar
+          </button>
         </form>
       </DivLogin>
       <Link to={"/cadastro"}>
@@ -94,7 +99,7 @@ const DivLogin = styled.div`
     width: 310px;
     height: 45px;
     background: #52b6ff;
-    border-radius: 4.7px;
+    border-radius: 4.8px;
     font-family: "Lexend Deca";
     font-size: 20.976px;
     line-height: 26px;
